@@ -138,7 +138,8 @@ class numeric extends base {
      */
     public function response_valid($responsedata) {
         if (isset($responsedata->{'q'.$this->id})) {
-            return (($responsedata->{'q'.$this->id} == '') || is_numeric($responsedata->{'q'.$this->id}));
+       		return (($responsedata->{'q'.$this->id} == '') || is_numeric(str_replace(",", ".",$responsedata->{'q'.$this->id})));
+            //return (($responsedata->{'q'.$this->id} == '') || is_numeric($responsedata->{'q'.$this->id}));
         } else {
             return parent::response_valid($responsedata);
         }
